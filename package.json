@@ -1,0 +1,16 @@
+{
+  "name": "koa-apm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "elastic-apm-node": "^3.26.0",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1"
+  }
+}
