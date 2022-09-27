@@ -11,10 +11,24 @@ This App has 4 routes:
   `/flaky` for some successful requests and some error, change the `FLAKINESS_RATIO` for the error rate
 
 ### How
-- clone `https://github.com/fkanout/elastic-apm-api-alerts-generator`
-- cd `elastic-apm-api-alerts-generator`
+
+These instructions assume you have a running Kibana + Elasticsearch developer instance.
+
+
+- Download and uncompress latest APM Server: https://artifacts-api.elastic.co/v1/branches/master/builds/latest/projects/apm-server
+- Edit `apm-server.yml` in the APM server directory
+- Set `output.elasticsearch.hosts` to `["localhost:9200"]`
+- Set `output.elasticsearch.username` to `"elastic"`
+- Set `output.elasticsearch.password` to `"changeme"`
+- In Kibana, click on the "+ Add integrations" button at the bottom of the left hand navigation
+- Click on "Elastic APM"
+- On step on, click on the "APM integration" button (in the middle of the screen, part of step 1)
+- Click on "+ Add Elastic APM" (upper right hand side of the screen)
+- Click "Save and Continue" (botton right hand corner of the screen)
+- Click "Add Elastic Agent Later" on the modal
+- In a sepearte terminal session, start APM server with `./apm-server -e`
+- In a sepearte terminal session, clone `https://github.com/fkanout/elastic-apm-api-alerts-generator`
+- `cd elastic-apm-api-alerts-generator`
 - `npm install`
 - `node index` 
-- `curl http://localhost:3002/fail` || `curl http://localhost:3002/slow` || `curl http://localhost:3002/error` || `curl http://localhost:3002/flaky` || `curl http://localhost:3002/success`
-
-You can also automatically generate some calls to the API endpoints using `node scripts/run.js`
+- In a seperate terminal session, run `node scripts/run.js`
